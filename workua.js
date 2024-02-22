@@ -35,7 +35,7 @@ class WorkUa extends fjob.FindeJob {
         try {
             await this.w_page.locator('.dropdown').getByText('за 30 днів, за датою').click();
             await this.w_page.locator('.days').getByText('За 1 день').click();
-            
+           
             var data = {};
             var variant = await this.w_page.$$('.card');
             for(var m of variant) {
@@ -47,6 +47,7 @@ class WorkUa extends fjob.FindeJob {
                 } catch(err) {
                     } 
                 }   
+            
         } catch(err){
             } finally{ this.makeJSON(data, this.workua_name)}   
         

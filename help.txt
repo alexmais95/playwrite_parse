@@ -1,0 +1,3 @@
+npm run start - search job.
+npm run read - read all json.
+npm run del - remove all json.

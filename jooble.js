@@ -39,7 +39,7 @@ class Jooble extends fjob.FindeJob {
             await this.w_page.getByRole('button', { name: /Приймаю/i }).click();
             await this.w_page.getByRole('button', { name: /Застосувати/i }).click();
             this.page_down(this.w_page)
-            await this.w_page.waitForTimeout(4000);
+            await this.w_page.waitForTimeout(6000);
             var variant = await this.w_page.$('.infinite-scroll-component');
             var data_ = await variant.$$eval(
                 'a', el => el.map(

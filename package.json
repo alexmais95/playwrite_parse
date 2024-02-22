@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node start_search.js"
+    "start": "node start_search.js",
+    "read": "node list_job/read_json.js",
+    "del": "node list_job/remove_json.js"
   },
   "author": "alex",
   "license": "ISC",

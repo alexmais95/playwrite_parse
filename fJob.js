@@ -1,6 +1,7 @@
 const {chromium, firefox} = require('playwright')
 const fs = require('fs')
 const moment = require('moment')
+const path = require('path');
 
 
 class FindeJob {
@@ -9,6 +10,7 @@ class FindeJob {
         this.dateString = moment(this.now).format('YYYY-MM-DD');
         this.position = 'Python-програміст';
         this.format_sity = 'Дистанційно';
+        this.work_dir = path.resolve(__dirname);
     }
 
     async page_down(page) {
@@ -34,10 +36,10 @@ class FindeJob {
         data = JSON.stringify(data);
         let themes;
         try {
-            fs.writeFile(`/home/alexmais/js_prod/find_job/list_job/${this.dateString}-${name}.json`, data, "utf8", async (err) => {
+            fs.writeFile(`${this.work_dir}/list_job/${this.dateString}-${name}.json`, data, "utf8", async (err) => {
                 if (err) console.error(err);
                 else {
-                    fs.readFile(`/home/alexmais/js_prod/find_job/list_job/${this.dateString}-${name}.json`, "utf8", (error, array) => {
+                    fs.readFile(`${this.work_dir}/list_job/${this.dateString}-${name}.json`, "utf8", (error, array) => {
                     themes = array
                     });
                 }
@@ -53,7 +55,7 @@ class FindeJob {
 
     async start_search(){   
         this.browser = await chromium.launch({
-            'headless':false
+            'headless':true
         }); 
         this.context = await this.browser.newContext(
             {
