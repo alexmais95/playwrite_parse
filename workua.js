@@ -15,14 +15,13 @@ class WorkUa extends fjob.FindeJob {
         
         try {
             this.workua_name = 'workua';
-            this.w_page = await this.context.newPage();
-            await this.w_page.goto(this.url);
-            await this.w_page.getByPlaceholder('Посада або компанія').fill(this.position);
-            await this.w_page.getByPlaceholder('Місто').click();
+            await this.page.goto(this.url);
+            await this.page.getByPlaceholder('Посада або компанія').fill(this.position);
+            await this.page.getByPlaceholder('Місто').click();
             
-            await this.w_page.locator('.list-tips').getByText(this.format_sity).click();
+            await this.page.locator('.list-tips').getByText(this.format_sity).click();
             
-            await this.w_page.locator('.btn#sm-but').click();
+            await this.page.locator('.btn#sm-but').click();
             
         } catch(err) {
             console.error(err)
@@ -33,11 +32,11 @@ class WorkUa extends fjob.FindeJob {
     }
     async second_step(){
         try {
-            await this.w_page.locator('.dropdown').getByText('за 30 днів, за датою').click();
-            await this.w_page.locator('.days').getByText('За 1 день').click();
+            await this.page.locator('.dropdown').getByText('за 30 днів, за датою').click();
+            await this.page.locator('.days').getByText('За 1 день').click();
            
             var data = {};
-            var variant = await this.w_page.$$('.card');
+            var variant = await this.page.$$('.card');
             for(var m of variant) {
                 try {
                     var link_work = await m.$eval('.cut-top a', el => el.getAttribute('href'));

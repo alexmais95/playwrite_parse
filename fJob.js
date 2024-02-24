@@ -1,3 +1,4 @@
+require('dotenv').config()
 const {chromium, firefox} = require('playwright')
 const fs = require('fs')
 const moment = require('moment')
@@ -67,7 +68,7 @@ class FindeJob {
         );
         this.page = await this.context.newPage();
         this.search_link();
-        await this.page.waitForTimeout(30000);
+        await this.page.waitForTimeout(40000);
         await this.browser.close();
     }
 }
